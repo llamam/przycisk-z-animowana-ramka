@@ -1,5 +1,6 @@
 package button;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -51,6 +52,12 @@ public class TestApp {
 		btnTrjk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TriangleButton trojkat = new TriangleButton("Tekst");
+				trojkat.setBounds(177, 48, 89, 23);
+				trojkat.setVisible(true);
+				trojkat.setBackground(Color.yellow);
+				frame.getContentPane().add(trojkat);
+				
+				btnBasic.setVisible(false);
 			}
 		});
 		btnTrjk.setBounds(10, 151, 89, 23);
