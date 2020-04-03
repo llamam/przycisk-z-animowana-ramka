@@ -54,7 +54,7 @@ public class TestApp {
 				TriangleButton trojkat = new TriangleButton("Tekst");
 				trojkat.setBounds(177, 48, 89, 23);
 				trojkat.setVisible(true);
-				trojkat.setBackground(Color.yellow);
+				trojkat.setBackground(Color.pink);
 				frame.getContentPane().add(trojkat);
 				
 				btnBasic.setVisible(false);
