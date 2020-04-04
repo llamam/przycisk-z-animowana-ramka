@@ -2,11 +2,15 @@ package button;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class TestApp {
 
@@ -35,6 +39,20 @@ public class TestApp {
 		initialize();
 	}
 
+	public static BufferedImage getCircle() {
+		
+
+	    BufferedImage circleImage = new BufferedImage(60, 60, BufferedImage.TYPE_INT_ARGB);
+
+	    Graphics2D g = (Graphics2D) circleImage.getGraphics();
+	    g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+	    g.setColor(Color.PINK);
+	    g.fillOval(5, 5, 50, 50);
+	    g.drawOval(5, 5, 50, 50);
+	    return circleImage;
+	    
+		}
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -44,24 +62,36 @@ public class TestApp {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton btnBasic = new JButton("New button");
-		btnBasic.setBounds(177, 48, 89, 23);
+		JButton btnBasic = new JButton("");
+		btnBasic.setBounds(145, 21, 139, 72);
 		frame.getContentPane().add(btnBasic);
 		
 		JButton btnTrjk = new JButton("TR\u00D3JK\u0104T");
 		btnTrjk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TriangleButton trojkat = new TriangleButton("Tekst");
-				trojkat.setBounds(177, 48, 89, 23);
-				trojkat.setVisible(true);
-				trojkat.setBackground(Color.black);
-				frame.getContentPane().add(trojkat);
 				
-				btnBasic.setVisible(false);
+				btnBasic.setBorderPainted(false); 
+				btnBasic.setContentAreaFilled(false); 
+				btnBasic.setOpaque(false);
+
+				
+			    btnBasic.setIcon(new ImageIcon(getCircle()));
+
+				
 			}
 		});
+		
 		btnTrjk.setBounds(10, 151, 89, 23);
 		frame.getContentPane().add(btnTrjk);
+		
+		btnBasic.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent e) {
+				btnTrjk.setLabel("Dziala");
+				
+			}
+			
+		});
 	}
 
 }
