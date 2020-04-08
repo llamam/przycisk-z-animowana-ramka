@@ -11,6 +11,11 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.EtchedBorder;
+import java.awt.Font;
 
 public class TestApp {
 
@@ -62,12 +67,26 @@ public class TestApp {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton btnBasic = new JButton("");
-		btnBasic.setBounds(145, 21, 139, 72);
-		frame.getContentPane().add(btnBasic);
+		JPanel panel = new JPanel();
+		panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel.setBounds(139, 5, 151, 95);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
 		
-		JButton btnTrjk = new JButton("TR\u00D3JK\u0104T");
-		btnTrjk.addActionListener(new ActionListener() {
+		JButton btnBasic = new JButton("");
+		btnBasic.setBounds(6, 16, 139, 72);
+		panel.add(btnBasic);
+		
+		btnBasic.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
+		
+		JButton btnCircle = new JButton("CIRCLE");
+		btnCircle.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		btnCircle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				btnBasic.setBorderPainted(false); 
@@ -81,17 +100,26 @@ public class TestApp {
 			}
 		});
 		
-		btnTrjk.setBounds(10, 151, 89, 23);
-		frame.getContentPane().add(btnTrjk);
+		btnCircle.setBounds(10, 151, 89, 23);
+		frame.getContentPane().add(btnCircle);
 		
-		btnBasic.addActionListener(new ActionListener() {
-			@SuppressWarnings("deprecation")
-			public void actionPerformed(ActionEvent e) {
-				btnTrjk.setLabel("Dziala");
-				
-			}
-			
-		});
+		JButton btnTriangle = new JButton("TRIANGLE");
+		btnTriangle.setForeground(Color.BLACK);
+		btnTriangle.setBackground(Color.RED);
+		btnTriangle.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		btnTriangle.setOpaque(false);
+		btnTriangle.setContentAreaFilled(false); 
+		btnTriangle.setBounds(109, 151, 89, 23);
+		frame.getContentPane().add(btnTriangle);
+		
+		JButton btnSquare = new JButton("SQUARE");
+		btnSquare.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		btnSquare.setBounds(109, 185, 89, 23);
+		frame.getContentPane().add(btnSquare);
+		
+		JButton btnRectangle = new JButton("RECTANGLE");
+		btnRectangle.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		btnRectangle.setBounds(10, 185, 89, 23);
+		frame.getContentPane().add(btnRectangle);
 	}
-
 }
